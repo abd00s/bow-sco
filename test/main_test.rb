@@ -10,6 +10,11 @@ class MainTest < Minitest::Test
                    match.frames.size
     end
 
+    it "assigns numbers to the frames in a sequential 1 to 10 order" do
+      assert_equal (1..10).to_a,
+                   match.frames.map(&:number)
+    end
+
     it "starts with a score of zero (0)" do
       assert_equal 0, match.total_score
     end
