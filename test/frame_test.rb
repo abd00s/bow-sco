@@ -51,6 +51,11 @@ class FrameTest <  Minitest::Test
                      frame.spare
       end
 
+      it "maintains @strike as false" do
+        assert_equal false,
+                     frame.strike
+      end
+
       it "toggles @scored to true" do
         assert_equal true,
                      frame.scored
@@ -75,6 +80,11 @@ class FrameTest <  Minitest::Test
                      frame.spare
       end
 
+      it "maintains @strike as false" do
+        assert_equal false,
+                     frame.strike
+      end
+
       it "maintains @scored as false" do
         assert_equal false,
                      frame.scored
@@ -96,6 +106,16 @@ class FrameTest <  Minitest::Test
       it "sets @score to the max amount" do
         assert_equal Frame::MAX_NUMBER_OF_PINS,
                      frame.score
+      end
+
+      it "maintains @spare as false" do
+        assert_equal false,
+                     frame.spare
+      end
+
+      it "toggles @strike to true" do
+        assert_equal true,
+                     frame.strike
       end
     end
   end

@@ -18,6 +18,7 @@ class Frame
   def roll!(throws)
     create_rolls(throws)
     set_initial_score
+    toggle_strike
     toggle_spare
     mark_scored
     mark_played
@@ -35,8 +36,12 @@ class Frame
     @score = @rolls.inject(0) { |sum, r| sum + r.pins_down }
   end
 
+  def toggle_strike
+    @strike = score == MAX_NUMBER_OF_PINS && rolls.size == 1
+  end
+
   def toggle_spare
-    @spare = @score == MAX_NUMBER_OF_PINS
+    @spare = score == MAX_NUMBER_OF_PINS && rolls.size == 2
   end
 
   def mark_scored
