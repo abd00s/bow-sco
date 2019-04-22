@@ -1,5 +1,4 @@
-require "minitest/spec"
-require "minitest/autorun"
+require "./test/test_helper"
 require "./main"
 
 class MainTest < Minitest::Test
