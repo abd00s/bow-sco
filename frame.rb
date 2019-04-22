@@ -22,7 +22,7 @@ class Frame
     end
 
     @score = @rolls.inject(0) { |sum, r| sum + r.pins_down }
-    # @spare = @score == MAX_NUMBER_OF_PINS
+    @spare = @score == MAX_NUMBER_OF_PINS
     @played = true
   end
 end

@@ -44,6 +44,11 @@ class FrameTest <  Minitest::Test
         assert_equal sample_throw.reduce(&:+),
                      frame.score
       end
+
+      it "maintains @spare as false" do
+        assert_equal false,
+                     frame.spare
+      end
     end
   end
 end
