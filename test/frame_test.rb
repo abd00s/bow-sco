@@ -55,5 +55,19 @@ class FrameTest <  Minitest::Test
                      frame.played
       end
     end
+
+    describe "when it is a spare frame" do
+      let(:frame) { Frame.new(number: frame_number) }
+      let(:sample_throw) { [5, 5] }
+
+      def setup
+        frame.roll!(sample_throw)
+      end
+
+      it "toggles @spare to true" do
+        assert_equal true,
+                     frame.spare
+      end
+    end
   end
 end
