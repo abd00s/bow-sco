@@ -49,6 +49,11 @@ class FrameTest <  Minitest::Test
         assert_equal false,
                      frame.spare
       end
+
+      it "toggles @played as true" do
+        assert_equal true,
+                     frame.played
+      end
     end
   end
 end
