@@ -12,6 +12,7 @@ class FrameTest <  Minitest::Test
       assert_equal 0, frame.score
       assert_equal false, frame.strike
       assert_equal false, frame.spare
+      assert_equal false, frame.scored
     end
 
     it "initializes the rolls attribute as an empty array" do
@@ -50,6 +51,11 @@ class FrameTest <  Minitest::Test
                      frame.spare
       end
 
+      it "toggles @scored to true" do
+        assert_equal true,
+                     frame.scored
+      end
+
       it "toggles @played as true" do
         assert_equal true,
                      frame.played
@@ -67,6 +73,11 @@ class FrameTest <  Minitest::Test
       it "toggles @spare to true" do
         assert_equal true,
                      frame.spare
+      end
+
+      it "maintains @scored as false" do
+        assert_equal false,
+                     frame.scored
       end
     end
   end

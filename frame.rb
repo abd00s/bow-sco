@@ -1,7 +1,7 @@
 require "./roll"
 
 class Frame
-  attr_reader :number, :played, :score, :strike, :spare, :rolls
+  attr_reader :number, :played, :score, :strike, :spare, :rolls, :scored
 
   MAX_NUMBER_OF_PINS = 10
 
@@ -11,6 +11,7 @@ class Frame
     @score = 0
     @strike = false
     @spare = false
+    @scored = false
     @rolls = []
   end
 
@@ -20,8 +21,11 @@ class Frame
     create_rolls(throws)
     set_initial_score
     toggle_spare
+    mark_scored
     mark_played
   end
+
+  private
 
   def create_rolls(throws)
     throws.each do |throw|
@@ -35,6 +39,10 @@ class Frame
 
   def toggle_spare
     @spare = @score == MAX_NUMBER_OF_PINS
+  end
+
+  def mark_scored
+    @scored = true unless spare
   end
 
   def mark_played
