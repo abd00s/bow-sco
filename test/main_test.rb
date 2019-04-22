@@ -9,5 +9,9 @@ class MainTest < Minitest::Test
       assert_equal 10,
                    match.frames.size
     end
+
+    it "starts with a score of zero (0)" do
+      assert_equal 0, match.total_score
+    end
   end
 end
