@@ -80,5 +80,23 @@ class FrameTest <  Minitest::Test
                      frame.scored
       end
     end
+
+    describe "when it is a strike frame" do
+      let(:frame) { Frame.new(number: frame_number) }
+      let(:strike_throw) { [10] }
+
+      def setup
+        frame.roll!(strike_throw)
+      end
+
+      it "creates one Roll" do
+        assert_equal 1, frame.rolls.size
+      end
+
+      it "sets @score to the max amount" do
+        assert_equal Frame::MAX_NUMBER_OF_PINS,
+                     frame.score
+      end
+    end
   end
 end

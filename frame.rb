@@ -16,8 +16,6 @@ class Frame
   end
 
   def roll!(throws)
-    # return strike if throws.size == 1
-
     create_rolls(throws)
     set_initial_score
     toggle_spare
