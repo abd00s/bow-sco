@@ -1,3 +1,5 @@
+require "./roll"
+
 class Frame
   attr_reader :number, :played, :score, :strike, :spare, :rolls
 
@@ -8,5 +10,13 @@ class Frame
     @strike = false
     @spare = false
     @rolls = []
+  end
+
+  def roll!(throws)
+    # return strike if throws.size == 1
+
+    throws.each do |throw|
+      @rolls << Roll.create(pins_down: throw)
+    end
   end
 end
