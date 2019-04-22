@@ -1,5 +1,5 @@
 class Frame
-  attr_reader :number, :played, :score, :strike, :spare
+  attr_reader :number, :played, :score, :strike, :spare, :rolls
 
   def initialize(number: )
     @number = number

@@ -13,5 +13,9 @@ class FrameTest <  Minitest::Test
       assert_equal false, frame.strike
       assert_equal false, frame.spare
     end
+
+    it "initializes the rolls attribute as an empty array" do
+      assert_equal [], frame.rolls
+    end
   end
 end
