@@ -28,7 +28,7 @@ class FrameTest <  Minitest::Test
       assert frame.roll!(sample_throw)
     end
 
-    describe "when it is an open fram" do
+    describe "when it is an open frame" do
       it "creates two Rolls" do
         frame.roll!(sample_throw)
         assert_equal 2, frame.rolls.size
