@@ -3,7 +3,9 @@ require "./roll"
 class Frame
   attr_reader :number, :played, :score, :strike, :spare, :rolls
 
-  def initialize(number: )
+  MAX_NUMBER_OF_PINS = 10
+
+  def initialize(number:)
     @number = number
     @played = false
     @score = 0
@@ -18,5 +20,9 @@ class Frame
     throws.each do |throw|
       @rolls << Roll.create(pins_down: throw)
     end
+
+    @score = @rolls.inject(0) { |sum, r| sum + r.pins_down }
+    # @spare = @score == MAX_NUMBER_OF_PINS
+    @played = true
   end
 end

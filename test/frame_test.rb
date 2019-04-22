@@ -29,9 +29,20 @@ class FrameTest <  Minitest::Test
     end
 
     describe "when it is an open frame" do
-      it "creates two Rolls" do
+      let(:frame) { Frame.new(number: frame_number) }
+      let(:sample_throw) { [3, 3] }
+
+      def setup
         frame.roll!(sample_throw)
+      end
+
+      it "creates two Rolls" do
         assert_equal 2, frame.rolls.size
+      end
+
+      it "assigns the score for the rolls" do
+        assert_equal sample_throw.reduce(&:+),
+                     frame.score
       end
     end
   end
