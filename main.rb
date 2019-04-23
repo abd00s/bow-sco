@@ -32,10 +32,12 @@ class Main
   end
 
   def previous_frame
+    return if current_frame.number == 1
+
     @frames.find { |frame| frame.number == current_frame.number - 1 }
   end
 
   def last_played_frame
-    @frames.reverse.find { |frame| frame.played }
+    @frames.reverse.find(&:played)
   end
 end
