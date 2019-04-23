@@ -131,5 +131,4 @@ class FrameTest <  Minitest::Test
                    frame.score
     end
   end
-
 end

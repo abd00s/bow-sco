@@ -3,7 +3,7 @@ require "./main"
 
 class MainTest < Minitest::Test
   describe "when initializing a match" do
-    let(:match) { Main.new }
+    let(:match) { Main.new([]) }
 
     it "initializes 10 frames" do
       assert_equal 10,
@@ -17,6 +17,24 @@ class MainTest < Minitest::Test
 
     it "starts with a score of zero (0)" do
       assert_equal 0, match.total_score
+    end
+  end
+
+  describe "#score" do
+    describe "when 1 frame is played" do
+      describe "and frame is open" do
+        let(:input) { [[2, 3]] }
+        let(:match) { Main.new(input) }
+
+        def setup
+          match.score!
+        end
+
+        it "sums the total of pins and assigns that to score" do
+          assert_equal input.first.reduce(&:+),
+                       match.frames.first.score
+        end
+      end
     end
   end
 end
