@@ -127,7 +127,6 @@ class MainTest < Minitest::Test
       let(:expected_result) { 140 }
 
       it "assigns the correct total cumulative score" do
-        skip "spares not implemented"
         match.score!
 
         assert_equal expected_result,
