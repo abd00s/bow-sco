@@ -119,4 +119,17 @@ class FrameTest <  Minitest::Test
       end
     end
   end
+
+  describe "#apply_bonus" do
+    let(:bonus) { 5 }
+    let(:frame) { Frame.new(number: 1) }
+
+    it "increments the frame score by the bonus amount" do
+      frame.apply_bonus(bonus)
+
+      assert_equal bonus,
+                   frame.score
+    end
+  end
+
 end

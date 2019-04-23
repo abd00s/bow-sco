@@ -24,6 +24,10 @@ class Frame
     mark_played
   end
 
+  def apply_bonus(points)
+    @score += points
+  end
+
   private
 
   def create_rolls(throws)
