@@ -26,9 +26,23 @@ class Round
   end
 
   def apply_bonus
-    return if @previous_frame.nil? || @previous_frame.scored
+    return if @previous_frame.nil?
 
-    @previous_frame&.apply_bonus(@current_frame.rolls.first.pins_down)
+    apply_spare_bonus
+    apply_strike_bonus
+  end
+
+  def apply_spare_bonus
+    return unless @previous_frame.spare
+
+    @previous_frame.apply_bonus(@current_frame.rolls.first.pins_down)
     @current_frame.apply_bonus(@current_frame.rolls.first.pins_down)
+  end
+
+  def apply_strike_bonus
+    return unless @previous_frame.strike
+
+    @previous_frame.apply_bonus(@current_frame.score)
+    @current_frame.apply_bonus(@current_frame.score)
   end
 end
