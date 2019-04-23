@@ -29,6 +29,21 @@ class FrameTest <  Minitest::Test
       assert frame.roll!(throws: sample_throw)
     end
 
+    describe "when a cumulative score is passed in arguments" do
+      let(:cumulative_score) { 7 }
+      let(:sample_throw) { [3, 3] }
+      let(:frame) { Frame.new(number: frame_number) }
+
+      def setup
+        frame.roll!(throws: sample_throw, cumulative_score: cumulative_score)
+      end
+
+      it "sums the previous frame's cum with this frame's score so far" do
+        assert_equal cumulative_score + sample_throw.reduce(:+),
+                     frame.cumulative_score
+      end
+    end
+
     describe "when it is an open frame" do
       let(:frame) { Frame.new(number: frame_number) }
       let(:sample_throw) { [3, 3] }

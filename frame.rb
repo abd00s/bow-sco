@@ -1,7 +1,8 @@
 require "./roll"
 
 class Frame
-  attr_reader :number, :played, :score, :strike, :spare, :rolls, :scored
+  attr_reader :number, :played, :score, :strike, :spare, :rolls, :scored,
+              :cumulative_score
 
   MAX_NUMBER_OF_PINS = 10
 
@@ -15,9 +16,10 @@ class Frame
     @rolls  = []
   end
 
-  def roll!(throws:)
+  def roll!(throws:, cumulative_score: 0)
     create_rolls(throws)
     set_initial_score
+    update_cumulative_score(cumulative_score)
     toggle_strike
     toggle_spare
     mark_scored
@@ -50,6 +52,10 @@ class Frame
 
   def mark_scored
     @scored = true unless spare
+  end
+
+  def update_cumulative_score(previous_cumulative_score)
+    @cumulative_score = previous_cumulative_score + score
   end
 
   def mark_played
