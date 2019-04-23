@@ -28,6 +28,7 @@ class Frame
 
   def apply_bonus(points)
     @score += points
+    @cumulative_score += points
   end
 
   private
