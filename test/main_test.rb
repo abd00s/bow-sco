@@ -56,6 +56,27 @@ class MainTest < Minitest::Test
                        match.total_score
         end
       end
+
+      describe "and the first is a spare" do
+        let(:input) { [[4, 6], [7,1]] }
+        let(:match) { Main.new(input) }
+        let(:first_with_bonus) { input[0].reduce(&:+) + input[1][0] }
+        let(:cumulative) { first_with_bonus + input[1].reduce(&:+) }
+
+        def setup
+          match.score!
+        end
+
+        it "assigns score from 1st throw on current frame to previous" do
+          assert_equal first_with_bonus,
+                       match.frames.first.score
+        end
+
+        it "applies the bonus to the second frome as well" do
+          assert_equal cumulative,
+                       match.frames[1].cumulative_score
+        end
+      end
     end
   end
 
