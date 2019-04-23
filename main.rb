@@ -3,7 +3,7 @@ require "./frame"
 class Main
   attr_reader :frames, :total_score
 
-    def initialize(input = [])
+  def initialize(input = [])
     @total_score = 0
     @frames = initialize_frames
     @input = input

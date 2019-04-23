@@ -26,7 +26,7 @@ class FrameTest <  Minitest::Test
     let(:sample_throw) { [3, 3] }
 
     it "implements a #roll! message" do
-      assert frame.roll!(sample_throw)
+      assert frame.roll!(throws: sample_throw)
     end
 
     describe "when it is an open frame" do
@@ -34,7 +34,7 @@ class FrameTest <  Minitest::Test
       let(:sample_throw) { [3, 3] }
 
       def setup
-        frame.roll!(sample_throw)
+        frame.roll!(throws: sample_throw)
       end
 
       it "creates two Rolls" do
@@ -72,7 +72,7 @@ class FrameTest <  Minitest::Test
       let(:sample_throw) { [5, 5] }
 
       def setup
-        frame.roll!(sample_throw)
+        frame.roll!(throws: sample_throw)
       end
 
       it "toggles @spare to true" do
@@ -96,7 +96,7 @@ class FrameTest <  Minitest::Test
       let(:strike_throw) { [10] }
 
       def setup
-        frame.roll!(strike_throw)
+        frame.roll!(throws: strike_throw)
       end
 
       it "creates one Roll" do

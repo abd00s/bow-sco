@@ -8,14 +8,14 @@ class Frame
   def initialize(number:)
     @number = number
     @played = false
-    @score = 0
+    @score  = 0
     @strike = false
-    @spare = false
+    @spare  = false
     @scored = false
-    @rolls = []
+    @rolls  = []
   end
 
-  def roll!(throws)
+  def roll!(throws:)
     create_rolls(throws)
     set_initial_score
     toggle_strike
