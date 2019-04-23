@@ -1,4 +1,5 @@
 require "./frame"
+require "./round"
 
 class Main
   attr_reader :frames, :total_score
@@ -10,10 +11,11 @@ class Main
   end
 
   def score!
-    @input.each do |played_frame|
-      current_frame.roll!(
-        throws:           played_frame,
-        cumulative_score: previous_frame&.cumulative_score || 0
+    @input.each do |throws|
+      Round.play(
+        current_frame:  current_frame,
+        previous_frame: previous_frame,
+        throws:         throws
       )
     end
     @total_score = last_played_frame.cumulative_score
