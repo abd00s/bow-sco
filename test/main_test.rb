@@ -34,6 +34,11 @@ class MainTest < Minitest::Test
           assert_equal input.first.reduce(&:+),
                        match.frames.first.score
         end
+
+        it "toggles the frame#scored to true" do
+          assert_equal true,
+                       match.frames.first.scored
+        end
       end
     end
   end
