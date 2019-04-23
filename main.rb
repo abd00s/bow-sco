@@ -11,8 +11,12 @@ class Main
 
   def score!
     @input.each do |played_frame|
-      current_frame.roll!(played_frame)
+      current_frame.roll!(
+        throws:           played_frame,
+        cumulative_score: previous_frame&.cumulative_score || 0
+      )
     end
+    @total_score = last_played_frame.cumulative_score
   end
 
   private
@@ -27,5 +31,9 @@ class Main
 
   def previous_frame
     @frames.find { |frame| frame.number == current_frame.number - 1 }
+  end
+
+  def last_played_frame
+    @frames.reverse.find { |frame| frame.played }
   end
 end
