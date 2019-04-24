@@ -1,0 +1,26 @@
+AllCops:
+  TargetRubyVersion: 2.5.1
+
+Layout/AlignHash:
+  EnforcedHashRocketStyle: table
+  EnforcedColonStyle: table
+
+Metrics/BlockLength:
+  Enabled: true
+  Exclude:
+    - "test/*"
+
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - "test/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
